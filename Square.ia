@@ -1,0 +1,157 @@
+LOP
+DCL true int   functionnal vars
+DCL false int
+DCL void string
+DCL end int
+DCL key string
+MDL true 1
+MDL false 0
+MDL end 0
+MDL key 
+DCL x1 int    game vars
+DCL y1 int
+DCL x2 int
+DCL y2 int
+DCL life int
+DCL atk int
+DCL level int
+DCL mobX list
+DCL mobY list
+DCL mobLife list
+DCL mobAtk int
+DCL text string TEMPORAIRE
+DCL cnt int
+DCL five int
+DCL z string
+DCL q string
+DCL s string
+DCL d string
+DCL e string
+DCL h string
+DCL j string
+DCL temp int
+DCL mobX1 int
+DCL mobY1 int
+DCL mobX2 int
+DCL mobY2 int
+DCL actualMob int
+
+LOP         init
+MDL x1 250
+MDL y1 150
+MDL life 50
+MDL atk 1
+MDL level 0
+APL mobX 300
+APL mobY 150
+APL mobLife 3
+APL mobX 0
+APL mobY 10
+APL mobLife 3
+APL mobX 200
+APL mobY 100
+APL mobLife 3
+MDL text Executing_code... TEMPORAIRE
+MDL cnt 0
+MDL five 5
+MDL z z
+MDL q q
+MDL s s
+MDL d d
+MDL e e
+MDL h h
+MDL j j
+MDL temp 0
+MDL actualMob 0
+PRT "Launching graphics."
+SIZ 500 300
+IGR
+
+BFT sayHi
+PRT "Hi !"
+EFT
+
+BFT test
+SHW mobX
+SHW mobY
+SHW mobLife
+GLL mobX 0 temp
+SHW temp
+GLL mobX 1 temp
+SHW temp
+GLL mobX 2 temp
+SHW temp
+GLL mobY 0 temp
+SHW temp
+GLL mobY 1 temp
+SHW temp
+GLL mobY 2 temp
+SHW temp
+GLL mobLife 0 temp
+SHW temp
+GLL mobLife 1 temp
+SHW temp
+GLL mobLife 2 temp
+SHW temp
+EFT
+
+BFT showMob
+GLR mobX actualMob mobX1
+GLR mobY actualMob mobY1
+MDR mobX2 mobX1
+MDR mobY2 mobY1
+ADD mobX2 20
+ADD mobY2 20
+RCT mobX1 mobY1 mobX2 mobY2
+EFT
+
+LOP           main
+GKP key
+IFE key z
+ADD y1 -4
+EIE
+IFE key q
+ADD x1 -4
+EIE
+IFE key s
+ADD y1 4
+EIE
+IFE key d
+ADD x1 4
+EIE
+IFE key e
+MDR end true
+EIE
+IFE key h
+FTN sayHi void
+EIE
+IFE key j
+FTN test void
+EIE
+MDL key 
+COL red 255
+COL green 155
+COL blue 0
+FTN showMob void
+ADD actualMob 1
+FTN showMob void
+ADD actualMob 1
+FTN showMob void
+ADD actualMob -2
+COL red 0     #display
+COL green 0
+COL blue 255
+MDR x2 x1
+MDR y2 y1
+ADD x2 50
+ADD y2 50
+RCT x1 y1 x2 y2
+UGR
+ SLP 0.0001
+IFE end false
+RPT 1
+EIE
+
+LOP
+DGR
+PRT "Ending graphics."
